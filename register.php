@@ -99,6 +99,7 @@ if(isset($_POST['submit'])){
 
 	//create account
 	$user = new User();
+	$user->id = md5(mcrypt_create_iv(64));
 	$user->accountStatus = 1;
 	$user->created = time();
 	$user->email = $email;

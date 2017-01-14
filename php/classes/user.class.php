@@ -73,6 +73,20 @@ class User {
 
     }
 
+    public static function getAccountInfo($id){
+        $dbInstance = DB::getInstance();
+        $sqlCon = $dbInstance->getConnection();
+
+        $id = $sqlCon->escape_string($id);
+
+        $query = "SELECT * FROM accounts WHERE id = '$id'";
+
+        $result = $sqlCon->query($query);
+
+        return $result->fetch_assoc();
+
+    }
+
     /**
      * @return boolean sets status to 0 to deactivate account
      */
@@ -125,6 +139,41 @@ class User {
 
         $query = "INSERT INTO accounts(id,firstname,lastname,email,password,cell,country,city,account_status,created,last_accessed)";
         $query.="VALUES('$id','$firstName','$lastName','$email','$password','$cell','$country','$city',$accountStatus,$created,$lastAccessed)";
+
+        $result = $sqlCon->query($query);
+
+        return $result;
+
+    }
+
+        public function updateAccount(){
+        $dbInstance = DB::getInstance();
+        $sqlCon = $dbInstance->getConnection();
+
+        $id = $sqlCon->escape_string($this->id);
+        $firstName = $sqlCon->escape_string($this->firstName);
+        $lastName = $sqlCon->escape_string($this->lastName);
+        $cell = $sqlCon->escape_string($this->cell);
+        $country = $sqlCon->escape_string($this->country);
+        $city = $sqlCon->escape_string($this->city);
+
+        $query = "UPDATE accounts SET firstname='$firstName', lastname = '$lastName', cell = '$cell', country = '$country', city = '$city' WHERE id = '$id'";
+
+        $result = $sqlCon->query($query);
+
+        return $result;
+
+    }
+
+    public static function updatePassword($password,$userId){
+
+        $dbInstance = DB::getInstance();
+        $sqlCon = $dbInstance->getConnection();
+
+        $password = $sqlCon->escape_string($password);
+        $userId = $sqlCon->escape_string($userId);
+
+        $query = "UPDATE accounts SET password = '$password' WHERE id = '$userId'";
 
         $result = $sqlCon->query($query);
 

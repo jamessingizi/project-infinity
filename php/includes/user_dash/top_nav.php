@@ -16,7 +16,7 @@
                     <a href="#"><i class="fa fa-calendar"></i><span>Events</span></a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown"><i class="fa fa-comments"></i><span>Comments</span></a>
+                    <a href="comments.php" class="dropdown"><i class="fa fa-comments"></i><span>Comments</span></a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shield"></i><span>Competitions</span></a>

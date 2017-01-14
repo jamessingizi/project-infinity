@@ -2,6 +2,12 @@
 require_once './php/config.php';
 $title = 'Project Infinity | Home';
 require_once './php/includes/page_head.php';
+require_once './php/classes/project.class.php';
+require_once './php/classes/pagination.class.php';
+
+$project = new Project();
+$projects= $project->getLatestProjects(3,0);
+$projectsBatch2= $project->getLatestProjects(3,3);
 ?>
 
 <body>
